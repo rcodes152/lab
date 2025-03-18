@@ -6,16 +6,17 @@ using UnityEngine.Video;
 public class move : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
-  public GameObject videoUI;
+  public RawImage raw;
     Animator anim;
     AudioSource  audi;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        videoUI.SetActive(false);
+        
         anim=GetComponent<Animator>();
         audi=GetComponent<AudioSource>();
-        videoPlayer=GetComponent<VideoPlayer>();
+        raw.enabled=false;
+        videoPlayer.stop();
     }
 
     // Update is called once per frame
@@ -23,7 +24,7 @@ public class move : MonoBehaviour
     {
         anim.SetTrigger("move");
         audi.Play();
-        videoUI.SetActive(true);
+        raw.enabled=true;
         videoPlayer.Play();
         
     }
